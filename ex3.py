@@ -5,9 +5,10 @@ import numpy as np
 def main(argv):
     diretorio = argv[0]
     image = io.imread(diretorio)
+    
     if image.shape[2] == 1:
         cinza(diretorio)
-    if image.shape[2] == 3:
+    elif image.shape[2] == 3:
         RGB(diretorio)
         
 
