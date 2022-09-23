@@ -3,7 +3,7 @@ import numpy as np
 
 image = io.imread('./imagens/peppers.jpg')
 maxValue = np.amax(image)
-negativeImage = maxValue - image
-io.imsave('./imagens/mpeppers_negativo.jpg', negativeImage)
-io.imshow(negativeImage)
-           
+blue_channel = image[:,:,0]
+negativeImage = maxValue - blue_channel
+io.imsave('./imagens/peppers_negativo.jpg', negativeImage)
+io.imshow(negativeImage) 
