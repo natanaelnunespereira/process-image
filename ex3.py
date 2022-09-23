@@ -3,11 +3,12 @@ from skimage import io
 import numpy as np
 
 def main(argv):
-    imagem = argv[0]
-    if imagem.shape[2] == 1:
-        cinza(imagem)
-    if imagem.shape[2] == 3:
-        RGB(imagem)
+    diretorio = argv[0]
+    image = io.imread(diretorio)
+    if image.shape[2] == 1:
+        cinza(diretorio)
+    if image.shape[2] == 3:
+        RGB(diretorio)
         
 
 if __name__ == '__main__':
