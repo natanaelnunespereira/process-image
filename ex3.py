@@ -6,19 +6,18 @@ def main(argv):
     diretorio = argv[0]
     image = io.imread(diretorio)
     
-    if image.shape[2] != 3:
-        img = cinza(image)
-        
+    if image.shape[2] == 3:
+        img = RGB(image)   
     else:
-        img = RGB(image)
+        img = cinza(image)
 
     io.imsave('./imagens/negativo.jpg', img)    
 
 def cinza(image):
     maxValue = np.amax(image)
-    negativeImage = maxValue - image
+    image = maxValue - image
     
-    return negativeImage
+    return image
 
 def RGB(image):
     image[:,:,0] = np.amax(image[:,:,0]) - image[:,:,0]
