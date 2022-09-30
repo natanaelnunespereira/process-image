@@ -11,18 +11,21 @@ def histograma(img):
         cinza(image)    
 
 def RGB(image):
+    dic = {}
+    cores = ["azul", "verde", "vermelho"]
     
-    return True
+    for i in range(image.shape[2]):
+        dic[i] = {}
+        for x in range(0, image.shape[0]):
+            for y in range(0, image.shape[1]):
+                if image[x, y, i] in dic[i]:
+                    dic[i][image[x, y, i]] += 1
+                else:
+                    dic[i][image[x, y, i]] = 1
+                
+        plt.plot(dic[i].values(), color = cores[i])
     
 def cinza(image):
-    fig, ax = plt.subplots()
-    plt.imshow(image, cmap="gray")
-    plt.figure()
-    plt.title("Cinza")
-    plt.xlabel("Cinza")
-    plt.ylabel("Quantidade de pixel")
-    plt.xlim([0.0, 1.0])
-    histogram, bin_edges = np.histogram(image, bins=256, range=(0, 1))
-    plt.plot(bin_edges[0:-1], histogram)
+    return True
 
 histograma("./imagens/peppers.jpg")

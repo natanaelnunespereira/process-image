@@ -6,7 +6,7 @@ def main(argv):
     diretorio = argv[0]
     image = io.imread(diretorio)
     
-    if image.shape[0] == 3:
+    if len(image.shape) == 3:
         img = RGB(image)   
     else:
         img = cinza(image)
