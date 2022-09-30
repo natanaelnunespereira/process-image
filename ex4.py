@@ -4,15 +4,11 @@ from matplotlib import pyplot as plt
 
 def histograma(img):
     image = io.imread(img)
-    
-    if image.shape[2] == 3:
-        RGB(image)
-    else:
-        cinza(image)    
-
-def RGB(image):
     dic = {}
-    cores = ["azul", "verde", "vermelho"]
+    cores = ["blue", "green", "red"]
+    
+    if len(image.shape) < 3:
+        image = image[:, :, np.newaxis]
     
     for i in range(image.shape[2]):
         dic[i] = {}
@@ -23,9 +19,6 @@ def RGB(image):
                 else:
                     dic[i][image[x, y, i]] = 1
                 
-        plt.plot(dic[i].values(), color = cores[i])
-    
-def cinza(image):
-    return True
+        plt.plot(list(dic[i].values()), color = cores[i])
 
 histograma("./imagens/peppers.jpg")
