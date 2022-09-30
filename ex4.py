@@ -28,4 +28,4 @@ def alargamento(img, a, b):
     io.imshow(image)
     
 #histograma("./imagens/peppers.jpg")
-alargamento("./imagens/peppers.jpg")
+alargamento("./imagens/peppers.jpg", )
