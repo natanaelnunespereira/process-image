@@ -20,12 +20,14 @@ def histograma(img):
                     dic[i][image[x, y, i]] = 1
                 
         plt.plot(list(dic[i].values()), color = cores[i])
+    
+    plt.show()
 
 def alargamento(img, a, b):
     image = io.imread(img)
-    image = image*a+b    
-    io.imsave('./imagens/alargamento.jpg', image)
-    io.imshow(image)
+    image_alarg = image*a+b    
+    io.imsave('./imagens/alargamento.jpg', image_alarg)
+    io.imshow(image_alarg)
     
 #histograma("./imagens/peppers.jpg")
-alargamento("./imagens/peppers.jpg", )
+alargamento("./imagens/peppers.jpg", 0.5, 2)
