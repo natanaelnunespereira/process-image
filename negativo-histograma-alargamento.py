@@ -15,7 +15,7 @@ def main(argv):
 
     io.imsave('./imagens/negativo.jpg', img)    
     histograma(image)
-    alargamento(argv[0], int(argv[1]), int(argv[2]))
+    alargamento(argv[0], float(argv[1]), float(argv[2]))
 
 def cinza(image):
     maxValue = np.amax(image)
