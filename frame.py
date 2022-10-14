@@ -1,16 +1,33 @@
-import sys
 from skimage import io
 import numpy as np
 import glob
-from natsort import natsorted
 
 lista = []
+
 for file in glob.glob('./imagens/subtracao_movimento/*.png'): 
     lista.append(file)
  
-lista.sort()
-#print(lista)
-print(io.imread(lista[0][]))
-for i in lista:
-    #arq = io.imread(lista.i)
-    #arq2 = io.imread(lista.i+1)
+lista = sorted(lista)
+
+for i in range(len(lista)-1):
+    arq = io.imread(lista[i])
+    aux = io.imread(lista[i+1])
+    aux2 = np.zeros(arq.shape)
+    aux2[:,:,4] = 255
+    qnt = 0
+    qnt2 = 0
+    
+    for x in range(330, 455):
+        for y in range(165, 220):
+            qnt += 1
+            pixel = arq[x][y].astype(np.int8)
+            pixel_aux = aux[x][y].astype(np.int8)
+            v = sum(abs(pixel - pixel_aux))
+            
+            if v >= 50:
+                aux2[x][y] = np.array([255, 255, 255, 255], dtype=np.uint8)
+                qnt2 += 1
+
+
+    if qnt2*100/qnt >= 20:
+        io.imsave(f'./alerta/alerta{i}.png', aux2)
