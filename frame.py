@@ -13,7 +13,7 @@ for i in range(len(lista)-1):
     arq = io.imread(lista[i])
     aux = io.imread(lista[i+1])
     aux2 = np.zeros(arq.shape)
-    aux2[:,:,4] = 255
+    aux2[:,:,3] = 255
     qnt = 0
     qnt2 = 0
     
@@ -30,4 +30,4 @@ for i in range(len(lista)-1):
 
 
     if qnt2*100/qnt >= 20:
-        io.imsave(f'./alerta/alerta{i}.png', aux2)
+        io.imsave(f'./imagens/alerta/alerta-{i}.png', aux2)
