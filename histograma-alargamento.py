@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 from skimage import io
 import numpy as np
 from matplotlib import pyplot as plt
